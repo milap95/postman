@@ -1,0 +1,445 @@
+{
+	"info": {
+		"_postman_id": "e291ceb0-5637-4207-a36d-5a67dce5c503",
+		"name": "Local",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11802192"
+	},
+	"item": [
+		{
+			"name": "CRUD",
+			"item": [
+				{
+					"name": "Get All Person",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/persons",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"persons"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Single Person",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/persons/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"persons",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Person",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n      \"firstname\": \"Pinkal\",\r\n      \"lastname\": \"Panchal\",\r\n      \"age\": 29,\r\n      \"id\": \"4\",\r\n      \"address\": \"Sankhari\",\r\n      \"phoneNumber\": \"7876765432\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/persons",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"persons"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Partial Update Person",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"firstname\": \"Tinu\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/persons/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"persons",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Full Person",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"4\",\r\n    \"firstname\": \"Pinkal\",\r\n    \"lastname\": \"Panchal\",\r\n    \"age\": 29,\r\n    \"address\": \"Sankhari\",\r\n    \"phoneNumber\": \"7876765432\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/persons/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"persons",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Person",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/persons/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"persons",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Local Variables",
+			"item": [
+				{
+					"name": "Integration Scenario",
+					"item": [
+						{
+							"name": "Create a person",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Your test name\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    pm.environment.set(\"id\", jsonData.id);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n      \"firstname\": \"Pinkal\",\r\n      \"lastname\": \"Panchall\",\r\n      \"age\": 29,\r\n      \"address\": \"Bapunagar\",\r\n      \"phoneNumber\": \"9898989898\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/persons",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"persons"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Single Person",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/persons/{{id}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"persons",
+										"{{id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "New Request",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"pm.test(\"Response time is less than 200ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"firstname\": \"Tinu\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/persons/{{id}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"persons",
+										"{{id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Single Person again",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/persons/{{id}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"persons",
+										"{{id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "New Request",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Response time is less than 200ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+											"});\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/persons/{{id}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"persons",
+										"{{id}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "test",
+					"item": [
+						{
+							"name": "Create a person test",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"//import Ajv from \"ajv\"\r",
+											"// Node.js require:\r",
+											"const Ajv = require(\"ajv\")\r",
+											"\r",
+											"const ajv = new Ajv()\r",
+											"\r",
+											"pm.test(\"JSON Schema Validation\", function () {\r",
+											"    var jsonData = pm.response.json();\r",
+											"    \r",
+											"    var schema = {\r",
+											"  //\"$schema\": \"https://json-schema.org/draft-07/schema\",\r",
+											"  \"$id\": \"http://example.com/example.json\",\r",
+											"  \"title\": \"Root Schema\",\r",
+											"  \"type\": \"object\",\r",
+											"  \"required\": [\r",
+											"    \"firstname\",\r",
+											"    \"lastname\",\r",
+											"    \"age\",\r",
+											"    \"id\",\r",
+											"    \"address\"   \r",
+											"  ],\r",
+											"  \"additionalProperties\": true,\r",
+											"  \"properties\": {\r",
+											"    \"firstname\": {\r",
+											"      \"title\": \"The firstname Schema\",\r",
+											"      \"type\": \"string\"\r",
+											"    },\r",
+											"    \"lastname\": {\r",
+											"      \"title\": \"The lastname Schema\",\r",
+											"      \"type\": \"string\"\r",
+											"    },\r",
+											"    \"age\": {\r",
+											"      \"title\": \"The age Schema\",\r",
+											"      \"type\": \"integer\"\r",
+											"    },\r",
+											"    \"id\": {\r",
+											"      \"title\": \"The id Schema\",\r",
+											"      \"type\": \"string\"\r",
+											"    },\r",
+											"    \"address\": {\r",
+											"      \"title\": \"The address Schema\",\r",
+											"      \"type\": \"string\"\r",
+											"    },\r",
+											"    \"phoneNumber\": {\r",
+											"      \"title\": \"The phoneNumber Schema\",\r",
+											"      \"type\": \"string\"\r",
+											"    }\r",
+											"  }\r",
+											"};\r",
+											"const validate = ajv.compile(schema)\r",
+											"const valid = validate(jsonData)\r",
+											"if (!valid) console.log(validate.errors)\r",
+											"\r",
+											"pm.expect(valid).to.be.true;\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n      \"firstname\": \"Tinu\",\r\n      \"lastname\": \"Panchal\",\r\n      \"age\": 29,\r\n      \"address\": \"Bapunagar\",\r\n      \"phoneNumber\": \"9898989898\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/persons",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"persons"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}

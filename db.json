@@ -1,0 +1,29 @@
+{
+    "persons":
+    [
+        {
+            "firstname": "Milap",
+            "lastname": "Panchal",
+            "age": 29,
+            "id": 1,
+            "address": "Bapunagar",
+            "phoneNumber": "9898989898"
+        },
+        {
+            "firstname": "Milan",
+            "lastname": "Panchal",
+            "age": 32,
+            "id": 2,
+            "address": "Bapunagar",
+            "phoneNumber": "2221112221"
+        },
+        {
+            "firstname": "Mittal",
+            "lastname": "Panchal",
+            "age": 27,
+            "id": 3,
+            "address": "Bapunagar",
+            "phoneNumber": "4343489898"
+        }
+    ]
+}
